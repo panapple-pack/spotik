@@ -1,22 +1,20 @@
+import {useState} from 'react';
 import './Header.css';
 
 // Компонент - это просто функция которая возвращает JSX
 function Header() {
     const websiteTitle = "MusicMuzon";
-    const currentUser = {
-        name: "Oleg",
-        isLoggedIn: false
-    };
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     function HandleLoginClick() {
-        alert(currentUser.isLoggedIn ? 'До свидания!' : 'Добро пожаловать!');
+        setIsLoggedIn(!isLoggedIn);
     }
 
     return(
         <header className="header">
             <div className="logo">{websiteTitle}</div>
             <button className="login-btn" onClick={HandleLoginClick}>
-                {currentUser.isLoggedIn ? 'Выйти' : 'Войти'}
+                {isLoggedIn ? 'Выйти' : 'Войти'}
             </button>
         </header>
     );
